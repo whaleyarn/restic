@@ -14,7 +14,8 @@ FROM debian:bookworm-slim AS restic
 
 # Install runtime dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    ca-certificates fuse openssh-client tzdata jq bash-completion && \
+    ca-certificates fuse openssh-client tzdata jq ncdu \
+    bash-completion && \
     rm -rf /var/lib/apt/lists/*
 
 # Copy the built binary from the builder stage
