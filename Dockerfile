@@ -15,6 +15,7 @@ FROM debian:bookworm-slim AS restic
 # Install runtime dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates fuse openssh-client tzdata jq ncdu \
+    fzf \
     bash-completion && \
     rm -rf /var/lib/apt/lists/*
 
@@ -23,6 +24,8 @@ COPY --from=builder /go/src/github.com/restic/restic/restic /usr/bin
 
 RUN mkdir -p /etc/bash_completion.d && \
     restic generate --bash-completion /etc/bash_completion.d/restic
+
+COPY root/.bashrc /root/.bashrc
 
 RUN echo '. /usr/share/bash-completion/bash_completion' >> /etc/bash.bashrc
 
