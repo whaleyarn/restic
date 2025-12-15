@@ -44,7 +44,9 @@ jobs:
         run: git clone --depth 1 --branch=v${VERSION} $RESTIC_REPO $RESTIC_DIR
         
       - name: Copy Dockerfile to restic source
-        run: cp Dockerfile $RESTIC_DIR/
+        run: |
+          cp Dockerfile $RESTIC_DIR/
+          cp -r root $RESTIC_DIR/
          
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
