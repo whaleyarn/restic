@@ -25,7 +25,7 @@ COPY --from=builder /go/src/github.com/restic/restic/restic /usr/bin
 RUN mkdir -p /etc/bash_completion.d && \
     restic generate --bash-completion /etc/bash_completion.d/restic
 
-COPY root/.bashrc /root/.bashrc
+COPY root/bashrc /root/.bashrc
 
 RUN echo '. /usr/share/bash-completion/bash_completion' >> /etc/bash.bashrc
 
