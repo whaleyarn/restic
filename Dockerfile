@@ -15,6 +15,7 @@ FROM debian:bookworm-slim AS restic
 # Install runtime dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates fuse openssh-client tzdata jq ncdu \
+    rsync \
     fzf \
     bash-completion && \
     rm -rf /var/lib/apt/lists/*
